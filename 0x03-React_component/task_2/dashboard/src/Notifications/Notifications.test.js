@@ -7,7 +7,6 @@ import NotificationItem from "./NotificationItem";
 describe("Notification tests", () => {
   it("renders Notification component without crashing", () => {
     const component = shallow(<Notifications />);
-
     expect(component).toBeDefined();
   });
 
@@ -29,7 +28,17 @@ describe("Notification tests", () => {
 
   it("renders correct text", () => {
     const component = shallow(<Notifications />);
-
     expect(component.find("p").prop("children")).toBe("Here is the list of notifications");
+  });
+
+  it("calls console.log when markAsRead is called", () => {
+    const spyConsole = jest.spyOn(console, "log");
+    const wrapper = shallow(<Notifications />);
+    const instance = wrapper.instance(); 
+    instance.markAsRead(1);
+
+    expect(spyConsole).toHaveBeenCalledWith("Notification 1 has been marked as read");
+
+    spyConsole.mockRestore();
   });
 });
