@@ -65,4 +65,27 @@ describe("App tests", () => {
     expect(window.alert).toHaveBeenCalledWith("Logging you out");
     expect(logOutMock).toHaveBeenCalled();
   });
+
+  // Add a test to verify that after calling handleDisplayDrawer, the state should now be true
+  it("handleDisplayDrawer changes displayDrawer state to true", () => {
+    const component = shallow(<App />);
+    const instance = component.instance();
+
+    instance.handleDisplayDrawer();
+
+    expect(instance.state.displayDrawer).toBe(true);
+  });
+
+  // Add a test to verify that after calling handleHideDrawer, the state is updated to be false
+  it("handleHideDrawer changes displayDrawer state to false", () => {
+    const component = shallow(<App />);
+    const instance = component.instance();
+
+    // First, set the state to true
+    instance.setState({ displayDrawer: true });
+    // Then, call handleHideDrawer
+    instance.handleHideDrawer();
+
+    expect(instance.state.displayDrawer).toBe(false);
+  });
 });
