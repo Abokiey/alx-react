@@ -122,6 +122,31 @@ describe("Notification tests", () => {
 
     expect(wrapper.instance().shouldComponentUpdate(newListNotifications)).toBe(true);
   });
+  it("renders without crashing", () => {
+    const component = shallow(<Notifications />);
+
+    expect(component).toBeDefined();
+  });
+  it("should call handleDisplayDrawer when menu item is clicked", () => {
+    const handleDisplayDrawerMock = jest.fn();
+    const component = shallow(
+      <Notifications handleDisplayDrawer={handleDisplayDrawerMock} />
+    );
+
+    component.find("#menuItem").simulate("click");
+
+    expect(handleDisplayDrawerMock).toHaveBeenCalled();
+  });
+  it("should call handleHideDrawer when close button is clicked", () => {
+    const handleHideDrawerMock = jest.fn();
+    const component = shallow(
+      <Notifications handleHideDrawer={handleHideDrawerMock} displayDrawer={true} />
+    );
+
+    component.find("#close").simulate("click");
+
+    expect(handleHideDrawerMock).toHaveBeenCalled();
+  });
 });
 
 describe("onclick event behaves as it should", () => {
