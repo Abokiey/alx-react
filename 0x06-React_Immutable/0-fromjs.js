@@ -1,10 +1,10 @@
 #!/usr/bin/noode
-const {fromJS, Map} = require('immutable')
+const { fromJS } = require('immutable')
 
 import { fromJS } from "./node_modules/immutable/dist/immutable";
 
 export default function getImmutableObject(object) {
-    const immutablemap = fromJS(object);
+  const immutablemap = fromJS(object);
 
-    return immutablemap;
+  return immutablemap;
 }
