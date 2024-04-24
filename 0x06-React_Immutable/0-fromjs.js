@@ -1,4 +1,4 @@
-#!/usr/bin/noode
+#!/usr/bin/node
 
 import { fromJS } from 'immutable';
 
