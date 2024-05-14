@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App/App";
-import { uiReducer, initialState } from "./reducers/uiReducer";
+import uiReducer, { initialState } from "./reducers/uiReducer";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { Map } from "immutable";
